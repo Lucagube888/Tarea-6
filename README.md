@@ -30,20 +30,20 @@ Dentro del contenedor cliente, tiene diferentes apartados.
 
 Al usar el comando:
 
-sudo docker compose up -d
+    sudo docker compose up -d
 
 
 Levantará los contenedores con todo lo que hemos configurado, y le ponemos el -d para que vaya en segundo plano. Luego usaremos el siguiente comando para entrar en la terminal del contenedor cliente.
 
-docker exec -it cliente /bin/sh
+    docker exec -it cliente /bin/sh
 
-Dentro del cliente hacemos un <u> apt update </u> y luego instalaremos dig.
+Dentro del cliente hacemos un <u>apt update</u> y luego instalaremos dig.
 
-apt install dnsutils
+    apt install dnsutils
 
 Para comprobar que esta instalado hacemos un: 
 
-dig @172.25.5.1 ejemplo.asircastelao.inet
+    dig @172.25.5.1 ejemplo.asircastelao.inet
 
 Asi veremos la interfaz de dig y que nos funciona.
 

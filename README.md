@@ -1,49 +1,48 @@
-<h1>Practica 6</h1>
+<h1>Práctica 6</h1>
 
-<b>services:</b> Define los servicios (contenedores) que se iniciarán en Docker. En este caso, tienes dos servicios: asir_bind9 y cliente.
+<b>services:</b> Define os servizos (contenedores) que se iniciarán en Docker. Neste caso, tes dous servizos: asir_bind9 e cliente.
 
-Dentro del contenedor asir_bind9, tiene diferentes apartados.
+Dentro do contedor asir_bind9, ten diferentes apartados.
 
-<b>image:</b>  Indica que el contenedor utilizará la imagen ubuntu/bind9.
+<b>image:</b> Indica que o contedor empregará a imaxe ubuntu/bind9.
 
-<b>platform:</b>  Define la plataforma (arquitectura) como linux/amd64, útil para especificar la compatibilidad del contenedor.
+<b>platform:</b> Define a plataforma (arquitectura) como linux/amd64, útil para especificar a compatibilidade do contedor.
 
-<b>ports:</b> - 54:54: Expone el puerto 54 del contenedor al puerto 54 del host, lo cual permite el acceso desde fuera del contenedor en ese puerto específico.
+<b>ports:</b> - 54:54: Expón o porto 54 do contedor ao porto 54 do host, o cal permite o acceso dende fóra do contedor nese porto específico.
 
-<b>networks: bind9_subnet</b> Conecta el contenedor a la red bind9_subnet.
+<b>networks: bind9_subnet</b> Conecta o contedor á rede bind9_subnet.
 
-<b>ipv4_address:</b> 172.28.5.1: Asigna al contenedor la dirección IP 172.28.5.1 en la red especificada.
+<b>ipv4_address:</b> 172.28.5.1: Asigna ao contedor o enderezo IP 172.28.5.1 na rede especificada.
 
-<b>volumes:</b> Monta directorios del host en el contenedor.
+<b>volumes:</b> Monta directorios do host no contedor.
 
-Dentro del contenedor cliente, tiene diferentes apartados.
+Dentro do contedor cliente, ten diferentes apartados.
 
-<b>tty:</b> true: Activa un terminal de texto interactivo para el contenedor, útil para trabajar en modo interactivo.
+<b>tty:</b> true: Activa un terminal de texto interactivo para o contedor, útil para traballar en modo interactivo.
 
-<b>stdin_open:</b> true: Mantiene el flujo de entrada estándar abierto para interactuar con el contenedor.
+<b>stdin_open:</b> true: Mantén o fluxo de entrada estándar aberto para interactuar co contedor.
 
-<b>dns:</b> - 172.28.5.1: Configura el servidor DNS del contenedor como 172.28.5.1, que es la dirección IP del contenedor asir_bind9.
+<b>dns:</b> - 172.28.5.1: Configura o servidor DNS do contedor como 172.28.5.1, que é o enderezo IP do contedor asir_bind9.
 
-<b>bind9_subnet:</b> Crea o utiliza una red llamada bind9_subnet.
+<b>bind9_subnet:</b> Crea ou utiliza unha rede chamada bind9_subnet.
 
-<b>external:</b> true: Indica que esta red es externa (ya creada en Docker) y que Docker Compose no intentará crearla automáticamente.
+<b>external:</b> true: Indica que esta rede é externa (xa creada en Docker) e que Docker Compose non intentará creala automaticamente.
 
-Al usar el comando:
+Ao usar o comando:
 
     sudo docker compose up -d
 
-
-Levantará los contenedores con todo lo que hemos configurado, y le ponemos el -d para que vaya en segundo plano. Luego usaremos el siguiente comando para entrar en la terminal del contenedor cliente.
+Levantará os contedores con todo o que configuramos, e poñémoslle o -d para que vaia en segundo plano. Logo empregaremos o seguinte comando para entrar no terminal do contedor cliente.
 
     docker exec -it cliente /bin/sh
 
-Dentro del cliente hacemos un <u>apt update</u> y luego instalaremos dig.
+Dentro do cliente facemos un <u>apt update</u> e logo instalaremos dig.
 
     apt install dnsutils
 
-Para comprobar que esta instalado hacemos un: 
+Para comprobar que está instalado facemos un: 
 
-    dig @172.25.5.1 ejemplo.asircastelao.inet
+    dig @172.25.5.1 exemplo.asircastelao.inet
 
-Asi veremos la interfaz de dig y que nos funciona.
+Así veremos a interface de dig e que nos funciona.
 
